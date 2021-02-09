@@ -1,7 +1,6 @@
-require 'oystercard'
+require './lib/oystercard.rb'
 
 describe Oystercard do
-
   it 'should have a balance of 0' do
     expect(subject.balance).to eq 0
   end
@@ -11,18 +10,24 @@ describe Oystercard do
   end
 
   it 'should top up by given amount' do
-    expect{subject.top_up(20)}.to change{subject.balance}.by(20)
+    expect { subject.top_up(20) }.to change { subject.balance }.by(20)
   end
 
   it 'should not top up beyond £90' do
     maximum_amount = Oystercard.new.maximum_amount
     subject.top_up(maximum_amount)
-    expect{subject.top_up(1)}.to raise_error "reached topup limit of #{maximum_amount}!"
+    expect { subject.top_up(1) }.to raise_error "reached topup limit of #{maximum_amount}!"
+  end
+
+  it 'should not go below £0' do
+    minimum_amount = 0
+    current_amount = subject.top_up(5)
+    expect { subject.deduct(10) }.to raise_error "not enough money on oystercard, you have #{current_amount} left"
   end
 
   it 'should deduct money by given amount' do
     subject.top_up(20)
-    expect{subject.deduct(10)}.to change{subject.balance}.by(-10)
+    expect { subject.deduct(10) }.to change { subject.balance }.by(-10)
   end
 
   it 'can touch in' do
@@ -35,6 +40,4 @@ describe Oystercard do
     subject.touch_out
     expect(subject).not_to be_in_journey
   end
-
-
 end

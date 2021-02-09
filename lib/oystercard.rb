@@ -2,7 +2,6 @@ class Oystercard
 attr_reader :balance, :maximum_amount
 MAXIMUM_AMOUNT = 90
 
-
   def initialize(topup_limit = MAXIMUM_AMOUNT)
     @balance = 0
     @maximum_amount = topup_limit
@@ -15,6 +14,7 @@ MAXIMUM_AMOUNT = 90
   end
 
   def deduct(amount)
+
     @balance -= amount
   end
 
@@ -29,4 +29,5 @@ MAXIMUM_AMOUNT = 90
   def in_journey?
     @journey_status
   end
+
 end
