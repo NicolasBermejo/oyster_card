@@ -1,4 +1,5 @@
-#require './lib/Station'
+require './lib/Station'
+require './lib/Journey'
 
 class Oystercard
 	LIMIT = 90
@@ -41,3 +42,8 @@ private
 	end
 
 end
+
+
+
+
+#

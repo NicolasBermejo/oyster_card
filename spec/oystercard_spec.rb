@@ -1,5 +1,6 @@
-require 'oystercard'
-require 'station'
+require './lib/oystercard'
+require './lib/station'
+require './lib/Journey'
 
 describe Oystercard do
 let(:station){double :station}
