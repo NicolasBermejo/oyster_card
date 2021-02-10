@@ -1,4 +1,5 @@
 require 'oystercard'
+require 'station'
 
 describe Oystercard do
 let(:station){double :station}

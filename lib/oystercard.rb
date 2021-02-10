@@ -1,3 +1,5 @@
+#require './lib/Station'
+
 class Oystercard
 	LIMIT = 90
 	MINIMUM_FARE = 1
