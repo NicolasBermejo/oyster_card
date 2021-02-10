@@ -11,6 +11,7 @@ it { is_expected.to respond_to(:top_up).with(1).argument }
 it { is_expected.to respond_to(:touch_in).with(1).argument }
 it { is_expected.to respond_to(:touch_out).with(1).argument }
 it { is_expected.to respond_to(:in_journey?) }
+it { is_expected.to respond_to(:journey) }
 
 	describe '#initialize' do
 		it 'should have a default balance of zero' do
@@ -71,4 +72,24 @@ it { is_expected.to respond_to(:in_journey?) }
 			expect(subject.in_journey?).to be false
 		end
 	end
+
+  describe '#journey' do
+    it 'should be empty by default' do
+      expect(subject.journey).to include(:entry => [], :exit => [])
+    end
+
+
+    it 'should include entry and exit stations' do
+      subject.top_up(2)
+      subject.touch_in(station)
+      expect(:entry => station).to include(:entry => station)
+    end
+
+    it 'should include exit station' do
+      subject.top_up(2)
+      subject.touch_in(station)
+      subject.touch_out(station)
+      expect(subject.journey).to include(:exit => [station])
+    end
+  end
 end
