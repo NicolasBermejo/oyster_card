@@ -41,7 +41,7 @@ it { is_expected.to respond_to(:journey) }
 
     it 'should save which station you touched in' do
 			subject.top_up(min)
-			subject.touch_in(entry_station)
+			subject.touch_in(station)
 			expect(subject.entry_station).to eq(station)
 		end
 
@@ -50,8 +50,8 @@ it { is_expected.to respond_to(:journey) }
 	describe '#touch_out' do
 		it 'should update the status of the card to "not in journey"' do
       subject.top_up(1)
-			subject.touch_in(entry_station)
-			subject.touch_out(exit_station)
+			subject.touch_in(station)
+			subject.touch_out(station)
 			expect(subject.in_journey?).to be false
 		end
 
