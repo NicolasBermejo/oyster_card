@@ -5,15 +5,15 @@ require './lib/Journey'
 describe Journey do
 let(:entry_station) {double(:station)}
 let(:exit_station) {double(:station)}
-subject{described_class.new("Acton", "Ealing" )}
+subject{described_class.new(entry_station: entry_station, exit_station: exit_station)}
 
   it 'should be completed' do
     expect(subject).to be_complete
   end
 
   context 'only one station' do
-    subject{described_class.new(nil, "Ealing" )}
-    it 'should not be compolete' do
+    subject{described_class.new(exit_station: exit_station)}
+    it 'should not be complete' do
       expect(subject).to_not be_complete
     end
 

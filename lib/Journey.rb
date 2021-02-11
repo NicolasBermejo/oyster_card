@@ -2,14 +2,11 @@ require './lib/Station.rb'
 require './lib/oystercard.rb'
 
 class Journey
-attr_reader :entry_station, :exit_station
+attr_accessor :entry_station, :exit_station
 
-  def initialize(entry=nil)
-    @entry_station = entry
-  end
-
-  def exit(exit=nil)
-    @exit_station = exit
+  def initialize(stations = {})
+    @entry_station = stations[:entry_station]
+    @exit_station = stations[:exit_station]
   end
 
   def complete?
