@@ -1,4 +1,5 @@
-require 'oystercard'
+require './lib/oystercard.rb'
+require './lib/Journey.rb'
 
 class Station
 attr_reader :name, :zone

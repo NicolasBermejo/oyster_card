@@ -1,3 +1,6 @@
+require './lib/Station.rb'
+require './lib/oystercard.rb'
+
 class Journey
 attr_reader :entry, :exit
 

@@ -1,5 +1,6 @@
-require './lib/Station'
-
+require './lib/oystercard'
+require './lib/station'
+require './lib/Journey'
 
 describe Station do
 

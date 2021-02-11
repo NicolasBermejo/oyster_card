@@ -1,3 +1,8 @@
+require './lib/Journey.rb'
+require './lib/Station.rb'
+
+
+class Oystercard
 
 	LIMIT = 90
 	MINIMUM_FARE = 1
