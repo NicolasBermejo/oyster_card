@@ -1,7 +1,4 @@
-require './lib/Station'
-require './lib/Journey'
 
-class Oystercard
 	LIMIT = 90
 	MINIMUM_FARE = 1
 	attr_reader :balance, :entry_station, :exit_station, :journey
@@ -42,8 +39,3 @@ private
 	end
 
 end
-
-
-
-
-#
