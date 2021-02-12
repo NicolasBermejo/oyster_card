@@ -22,8 +22,7 @@ class Oystercard
 
 	def touch_in(station)
 		fail "You need at least £#{MINIMUM_FARE}" if @balance < MINIMUM_FARE
-		pay(PENALTY_FARE) if in_journey?
-		self.current_journey = Journey.new(entry_station: station)
+    no_touch_out(station)
 	end
 
 	def touch_out(station)
@@ -52,4 +51,13 @@ private
 			self.current_journey = Journey.new(exit_station: station)
 		end
 	end
+
+	def no_touch_out(station)
+    if in_journey?
+			pay(PENALTY_FARE)
+			journeys << current_journey
+		else
+			self.current_journey = Journey.new(entry_station: station)
+	  end
+  end
 end
